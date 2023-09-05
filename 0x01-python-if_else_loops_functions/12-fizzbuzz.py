@@ -1,12 +1,11 @@
 #!/usr/bin/python3
 for i in range(1, 101):
     if (i % 3 == 0 and i % 5 == 0):
-        str = 'fizzbuzz'
+        print("{}".format("fizzbuzz"), end=" ")
     else:
         if (i % 3 == 0):
-            str = 'fizz'
+            print("{}".format("fizz"), end=" ")
         elif (i % 5 == 0):
-            str = 'buzz'
+            print("{}".format("buzz"), end=" ")
         else:
-            str = format(i)
-    print("{}".format(str), end=" ")
+            print("{}".format(i), end=" ")
