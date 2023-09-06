@@ -30,14 +30,21 @@ while (tmp != NULL)
 	if (number <= tmp->n)
 	{
 		/*insertion */
-		old_node->next = new_node;
-		new_node->next = tmp;
+		if (old_node == NULL)
+		{
+			new_node->next = *head;
+			*head = new_node;
+		}
+		else
+		{
+			old_node->next = new_node;
+			new_node->next = tmp;
+		}
 		return (new_node);
 	}
 	old_node = tmp;
 	tmp = tmp->next;
 }
-
 old_node->next = new_node;
 return (new_node);
 }
