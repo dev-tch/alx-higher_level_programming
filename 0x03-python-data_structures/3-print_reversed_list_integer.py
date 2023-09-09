@@ -2,6 +2,6 @@
 def print_reversed_list_integer(my_list=[]):
     size = len(my_list)
     if size > 0:
-        mylist.Reverse()
+        my_list.reverse()
         for item in my_list:
             print("{:d}".format(item))
