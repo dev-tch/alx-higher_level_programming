@@ -1,48 +1,66 @@
 #include "lists.h"
 
+/*find the middle of list*/
 /**
-* reverse_list - recursive function to reverse list and save it in new one
-* @h: list of integers
-* @new: reversed list
-* Return: void
+* get_node_at_middle - search middle node
+* @h: list
+* Return: pointer to middle node
 */
-
-void reverse_list(listint_t *h, listint_t **new)
+listint_t *get_node_at_middle(listint_t *h)
 {
-	if (h == NULL)
+	/*declare two pointers at head*/
+	listint_t *jmpone = h,  *jmptwo = h;
+
+	while (jmpone != NULL && jmptwo != NULL)
 	{
-		return;
+		jmpone = jmpone->next;
+		jmptwo = jmptwo->next;
 	}
-	reverse_list(h->next, new);
-	add_nodeint_end(new, h->n);
+	return (jmpone);
 }
+
+/**/
 /**
-* is_palindrome - check if list is palindrome
+* reversed_list - reverse the second half of list
+* @h: second half list
+* Return: pointer to the list
+*/
+listint_t *reversed_list(listint_t *h)
+{
+	listint_t *before = NULL;
+	listint_t *now = h;
+	listint_t *after = NULL;
+
+	while (now != NULL)
+	{
+		after = now->next;
+		now->next = before;
+		before = now;
+		now = after;
+	}
+	return (before);
+}
+
+/**
+* is_palindrome -  list can be same if we  read from first or last
 * @head: list
-* Return: (1: palindrome) (0: not palindrome)
+* Return: (0 or 1)
 */
 int is_palindrome(listint_t **head)
 {
-	listint_t *tmp  = *head;
-	listint_t *tmp2 = *head;
-	listint_t *new  = NULL;
-	int  is_pal = 1;
-	/**/
-	if (tmp == NULL)
-	{
-		return (1);
-	}
-	reverse_list(tmp, &new);
+	listint_t *mid = get_node_at_middle(*head);
+	listint_t *halftwo =  reversed_list(mid);
+	listint_t *halfone = *head;
 
-	while (tmp2 != NULL && new != NULL)
+	while (halfone != NULL && halftwo != NULL)
 	{
-		if (tmp2->n != new->n)
+		if (halfone->n != halftwo->n)
 		{
-			is_pal = 0;
-			break;
+			return (0);
 		}
-		new  = new->next;
-		tmp2 = tmp2->next;
+		halfone = halfone->next;
+		halftwo = halftwo->next;
 	}
-	return (is_pal);
+
+	return (1);
 }
