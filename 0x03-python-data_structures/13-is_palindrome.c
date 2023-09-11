@@ -48,20 +48,29 @@ listint_t *reversed_list(listint_t *h)
 */
 int is_palindrome(listint_t **head)
 {
-	listint_t *tmp = *head;
-	listint_t *mid = get_node_at_middle(tmp);
-	listint_t *halftwo =  reversed_list(mid);
+	listint_t *mid = NULL;
+	listint_t *halftwo =  NULL;
 	listint_t *halfone = *head;
+	int is_pal = 1;
 
-	while (halfone != NULL && halftwo != NULL)
+	if (*head == NULL || (*head)->next == NULL)
+	return (1);
+
+	mid = get_node_at_middle(*head);
+	if (mid == NULL)
+		return (1);
+	halftwo =  reversed_list(mid->next);
+	while (halftwo != NULL)
 	{
 		if (halfone->n != halftwo->n)
 		{
-			return (0);
+			is_pal = 0;
+			break;
 		}
 		halfone = halfone->next;
 		halftwo = halftwo->next;
 	}
 
-	return (1);
+	mid->next = reversed_list(halfone);
+	return (is_pal);
 }
