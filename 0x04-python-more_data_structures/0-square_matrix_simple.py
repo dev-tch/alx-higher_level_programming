@@ -2,7 +2,7 @@
 def square_matrix_simple(matrix=[]):
     new_matrix = []
     for list in matrix:
-        list_new =[]
+        list_new = []
         for item in list:
             pow = item ** 2
             list_new.append(pow)
