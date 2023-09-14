@@ -18,10 +18,10 @@ def roman_to_int(roman_string):
     str = roman_string
     for i in range(size):
         current = str[i]
-        current_val = dict.get(current, 0)
+        current_val = dict.get(current.upper(), 0)
         if (i + 1) < size:
             next = str[i + 1]
-            next_val = dict.get(next, 0)
+            next_val = dict.get(next.upper(), 0)
             if current_val < next_val:
                 sum = sum - current_val
             else:
