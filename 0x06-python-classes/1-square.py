@@ -8,3 +8,11 @@ class Square:
         size(int): side len
     """
     __size
+    def __init__(self, size):
+
+        """ constructor method
+        Args:
+            self(Squre): current object
+            size: side len
+        """
+        self.__size = size
