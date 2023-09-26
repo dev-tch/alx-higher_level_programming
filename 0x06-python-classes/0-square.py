@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""Define a class Square."""
+
 class Square:
-    """Define a new  template class Square."""
+    """properties and methods of class Square."""
     pass
