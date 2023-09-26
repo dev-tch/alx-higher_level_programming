@@ -4,6 +4,7 @@
 
 class Square:
     """implement Square class.
+
     Attributes:
         size(int): side len
     """
@@ -11,8 +12,9 @@ class Square:
     def __init__(self, size):
 
         """ constructor method
+
         Args:
             self(Squre): current object
-            size: side len
+            size(int): side len
         """
         self.__size = size
