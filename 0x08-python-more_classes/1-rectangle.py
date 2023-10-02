@@ -11,6 +11,9 @@ class Rectangle:
             self(Rectangle): current object
             width(int):  short side
             height(int): long side
+        Raises:
+            TypeError: if width or height are not integer
+            ValueError: if width or height are less  than zero
         """
         self.width = width
         self.height = height
