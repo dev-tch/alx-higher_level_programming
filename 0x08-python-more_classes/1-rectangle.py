@@ -29,28 +29,27 @@ class Rectangle:
         return (self.__width)
 
     @width.setter
-def width(self, value):
-    """set the attribute width of object Rectangle
-    Args:
-        self(Rectangel): current object
-        value(int): new value of width
-    """
-    if not isinstance(value, int):
-        raise TypeError("width must be an integer")
-    elif (value < 0):
-        raise ValueError("width must be >= 0")
-    self.__width = value
+    def width(self, value):
+        """set the attribute width of object Rectangle
+        Args:
+            self(Rectangel): current object
+            value(int): new value of width
+        """
+        if not isinstance(value, int):
+            raise TypeError("width must be an integer")
+        elif (value < 0):
+            raise ValueError("width must be >= 0")
+        self.__width = value
 
-
-@property
-def height(self):
-    """get the attribute height of object Rectangle
-    Args:
-        self(Rectangel): current object
-    Returns:
-        int: the long side of rectangle
-    """
-    return (self.__height)
+    @property
+    def height(self):
+        """get the attribute height of object Rectangle
+        Args:
+            self(Rectangel): current object
+        Returns:
+            int: the long side of rectangle
+        """
+        return (self.__height)
 
     @height.setter
     def height(self, value):
