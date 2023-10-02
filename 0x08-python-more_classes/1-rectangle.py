@@ -49,7 +49,7 @@ def height(self):
     """
     return (self.__height)
 
-    @width.setter
+    @height.setter
     def height(self, value):
         """set the attribute height of object Rectangle
         Args:
