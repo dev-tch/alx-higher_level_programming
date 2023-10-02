@@ -76,7 +76,7 @@ class Rectangle:
             return (self.__width + self.height)*2
 
     def __str__(self):
-        """representation string of object Rectangle - for user"""
+        """representation string of object Rectangle -for user"""
         if self.__width == 0 or self.__height == 0:
             return ""
         rec_str = ""
