@@ -83,9 +83,3 @@ class Rectangle:
         for _ in range(self.__height):
             rec_str += "#" * self.__width + "\n"
         return rec_str[:-1]  # Remove the new line
-
-    def __repr__(self):
-        """ Representation String for developer
-        to create new object (eval function)
-        """
-        return f"Rectangle({self.width}, {self.__height})"
