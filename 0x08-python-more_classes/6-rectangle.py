@@ -5,7 +5,8 @@
 class Rectangle:
     """implement properties and methods of class Rectangle."""
 
-    number_of_instances = 0  # public attribute
+    # common to all objects
+    number_of_instances = 0  # public static field
 
     def __init__(self, width=0, height=0):
         """constructor of new object Rectangle
@@ -19,7 +20,7 @@ class Rectangle:
         """
         self.width = width
         self.height = height
-        self.number_of_instances += 1  # increment when create object
+        Rectangle.number_of_instances += 1  # increment when create object
 
     @property
     def width(self):
@@ -96,4 +97,4 @@ class Rectangle:
     def __del__(self):
         """called when an object is garbage collected"""
         print("Bye rectangle...")
-        self.number_of_instances -= 1  # decrement when object is deleted
+        Rectangle.number_of_instances -= 1  # decrement when object is deleted
