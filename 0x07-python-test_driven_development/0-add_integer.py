@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+"""
+this module return sum of two numbers
+exception ==> was raised if something is wrong
+"""
+
+
 def add_integer(a, b=98):
     """Returns a + b
     Args:
