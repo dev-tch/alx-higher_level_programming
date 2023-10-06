@@ -68,12 +68,32 @@ test overflow numbers
     ...
     OverflowError: cannot convert float infinity to integer
 
-Test_08:
+Test_08
+=======
 test conversion Nan
 
 ::
-Case NaN 2:
     >>> add_integer(float('nan'))
     Traceback (most recent call last):
-    	      ...
+    ...
     ValueError: cannot convert float NaN to integer
+
+Test_09
+======
+test overflow one argument
+
+::
+    >>> add_integer(float('inf'))
+    Traceback (most recent call last):
+    ...
+    OverflowError: cannot convert float infinity to integer
+
+Test_10
+=======
+test overflow two  arguments
+
+::
+    >>> add_integer(3, float('inf'))
+    Traceback (most recent call last):
+    ...
+    OverflowError: cannot convert float infinity to integer
