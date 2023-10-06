@@ -1,0 +1,76 @@
+test cases for module 3-say_my_name.py
+=======================================
+this module have one function that print full name of person
+
+
+Test_1
+=====
+import module
+
+::
+    >>> say_my_name = __import__('3-say_my_name').say_my_name
+
+Test_2
+======
+two valid arguments
+
+::
+    >>> say_my_name("Tijani", "Chaabani")
+    My name is Tijani Chaabani
+
+Test_3
+======
+argument 2 is optional
+
+::
+    >>> say_my_name("Tijani")
+    My name is Tijani 
+
+Test_4
+=============
+argument 1 is invalid (type int )
+
+::
+
+    >>> say_my_name(10, "Abbes")
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+Test_4
+=============
+argument 2 is invalid (type  list)
+
+::
+    >>> say_my_name("Mourad", ["php", "java", "c"])
+    Traceback (most recent call last):
+    TypeError: last_name must be a string
+
+
+Test_5
+=============
+two are arguments  are  invalid (dictionary and float )
+
+
+::
+
+    >>> say_my_name({"php": 10, "go": 25}, 10.7)
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+Test_6
+=============
+one argument invalid (None)
+
+::
+    >>> say_my_name(None)
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+
+Test_7
+=============
+without arguments
+
+::
+    >>> say_my_name()
+    Traceback (most recent call last):
+    TypeError: say_my_name() missing 1 required positional argument: 'first_name'
