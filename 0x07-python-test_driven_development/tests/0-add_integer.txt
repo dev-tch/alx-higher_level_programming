@@ -1,10 +1,7 @@
-#0-add_integer.txt
-===============================
- How to Use 0_add_integer.py
-===============================
+Test cases for 0-add_integer module
+===================================
 
-This library is very simple, since it only has one function called
-``add_integer()``.
+The 0-add_integer module returns the sum or two numbers (int or float)
 
 Test_01
 =======
