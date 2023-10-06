@@ -1,3 +1,9 @@
+#!/usr/bin/python3
+"""
+this module with one function
+"""
+
+
 def print_square(size):
     """
     print square with symbol #
