@@ -55,3 +55,19 @@ original list of my custom class must be intact
 ::
     >>> print(my_list)
     [1, 4, 2, 3, 5]
+
+test_06
+=======
+test list reversed
+
+	  >>> l = MyList()
+	  >>> l.append(4)
+	  >>> l.append(3)
+	  >>> l.append(2)
+	  >>> l.append(1)
+	  >>> print(l)
+	  [4, 3, 2, 1]
+	  >>> l.print_sorted()
+	  [1, 2, 3, 4]
+	  >>> print(l)
+	  [4, 3, 2, 1]
