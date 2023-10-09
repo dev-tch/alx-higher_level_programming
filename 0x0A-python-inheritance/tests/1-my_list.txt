@@ -9,7 +9,24 @@ import module
 ::
     >>> MyList = __import__('1-my_list').MyList
 
+test_01
+========
+my list is of type list
+
+::
+	  >>> issubclass(MyList, list)
+	  True
+
 test_02
+=======
+object  MyList  is empty
+
+::
+	  >>> l = MyList()
+	  >>> l.print_sorted()
+	  []
+
+test_03
 =======
 test fill original list of my custom class MYList
 
@@ -23,7 +40,7 @@ test fill original list of my custom class MYList
     >>> print(my_list)
     [1, 4, 2, 3, 5]
 
-test_03
+test_04
 =======
 test sorted list using method print_sorted of my custom class MYList
 
@@ -31,7 +48,7 @@ test sorted list using method print_sorted of my custom class MYList
     >>> my_list.print_sorted()
     [1, 2, 3, 4, 5]
 
-test_04
+test_05
 =======
 original list of my custom class must be intact
 
