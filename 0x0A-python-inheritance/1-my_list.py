@@ -9,4 +9,10 @@ class MyList(list):
     """
 
     def print_sorted(self):
+        """
+        Args:
+            prints the list, but sorted (ascending sort)
+        :returns:
+            ordered list
+        """
         print(sorted(self))

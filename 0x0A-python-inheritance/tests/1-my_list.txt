@@ -1,23 +1,56 @@
 test cases for module 1-my_list.py
 ==================================
+
 this module test class MyList that inherit  list object
 
 test_01
 =======
-import module
+import module 1-my_list.py
 
 ::
-    >>> MyList = __import__('1-my_list').MyList
+    >>> module = __import__('1-my_list')
 
 test_02
+=======
+check module docstring:
+
+::
+    >>> m = module.__doc__
+    >>> len(m) > 1
+    True
+
+test_03
+=======
+Check class docstring:
+
+::
+    >>> c = module.MyList.__doc__
+    >>> len(c) > 1
+    True
+
+test_04
+=======
+Check method docstring:
+
+::
+    >>> mod = module.MyList.print_sorted.__doc__
+    >>> len(mod) > 1
+    True
+
+test04.1
+========
+import class MyList
+::
+    >>> MyList  = module.MyList
+
+test_05
 ========
 my list is of type list
-
 ::
 	  >>> issubclass(MyList, list)
 	  True
 
-test03
+test06
 ======
 object invalid
 
@@ -28,7 +61,7 @@ object invalid
     ...
     NameError: name 'my_list2' is not defined
 
-test_04
+test_07
 =======
 object not instance of myList
 ::
@@ -38,7 +71,7 @@ object not instance of myList
     ...
     AttributeError: 'list' object has no attribute 'print_sorted'
 
-test_05
+test_08
 =======
 object  MyList  is empty
 
@@ -47,7 +80,7 @@ object  MyList  is empty
 	  >>> l.print_sorted()
 	  []
 
-test_06
+test_09
 =======
 test fill original list of my custom class MYList
 
@@ -61,7 +94,7 @@ test fill original list of my custom class MYList
     >>> print(my_list)
     [1, 4, 2, 3, 5]
 
-test_07
+test_10
 =======
 test sorted list using method print_sorted of my custom class MYList
 
@@ -69,7 +102,7 @@ test sorted list using method print_sorted of my custom class MYList
     >>> my_list.print_sorted()
     [1, 2, 3, 4, 5]
 
-test_08
+test_11
 =======
 original list of my custom class must be intact
 
@@ -77,7 +110,7 @@ original list of my custom class must be intact
     >>> print(my_list)
     [1, 4, 2, 3, 5]
 
-test_09
+test_12
 =======
 test list reversed
 
@@ -93,7 +126,7 @@ test list reversed
 	  >>> print(l)
 	  [4, 3, 2, 1]
 
-test_10
+test_13
 ======
 invalid arguments
 
