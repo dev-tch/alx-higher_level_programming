@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 """script that adds all arguments to a Python list"""
-
-
 from sys import argv
 
 if __name__ == "__main__":
