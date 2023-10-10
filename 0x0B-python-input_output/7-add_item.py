@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" add arguments to file"""
+""" add arguments to file format json"""
 from sys import argv
 from os.path import exists
 
