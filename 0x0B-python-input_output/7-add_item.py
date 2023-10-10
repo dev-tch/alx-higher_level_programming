@@ -14,11 +14,11 @@ def main():
     else:
         my_list = []
 
-    # Add command-line arguments to the list
-    my_list.extend(argv[1:])
-
-    # Save the updated list to "add_item.json"
-    save_to_json_file(my_list, "add_item.json")
+    if isinstance(my_list, list):
+        # Add command-line arguments to the list
+        my_list.extend(argv[1:])
+        # Save the updated list to "add_item.json"
+        save_to_json_file(my_list, "add_item.json")
 
 
 if __name__ == "__main__":
