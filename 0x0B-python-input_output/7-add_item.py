@@ -12,6 +12,8 @@ def main():
         my_list = load_from_json_file("add_item.json")
     except FileNotFoundError:
         my_list = []
+    for arg in argv[1:]:
+        my_list.append(arg)
     my_list.extend(argv[1:])
     save_to_json_file(my_list, "add_item.json")
 
