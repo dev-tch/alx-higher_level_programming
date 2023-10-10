@@ -22,7 +22,7 @@ class BaseGeometry:
             name(str): name of property
             value(int): value of property
         Returns:
-                int
+                void
         Raises:
             Exception
         """
