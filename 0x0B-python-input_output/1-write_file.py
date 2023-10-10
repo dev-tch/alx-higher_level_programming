@@ -12,5 +12,7 @@ def write_file(filename="", text=""):
     returns:
         void
     """
+    nb_written_data = 0
     with open('filename', 'w', encoding="utf-8") as f:
-        f.write(text)
+        nb_written_data = f.write(text)
+    return nb_written_data
