@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-script to save and load
+script to save and load object Json
 """
 import sys
 
