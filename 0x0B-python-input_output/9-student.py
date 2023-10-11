@@ -14,4 +14,9 @@ class Student:
 
     def to_json(self):
         """that retrieves a dictionary representation of a Student"""
-        return self.__doc__
+        student_dict = {
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'age': self.age
+        }
+        return student_dict
