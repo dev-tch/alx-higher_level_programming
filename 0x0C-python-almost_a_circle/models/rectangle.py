@@ -1,5 +1,5 @@
-""" module with one class Rectangle"""
 from models.base import Base
+""" module with one class Rectangle"""
 
 
 class Rectangle(Base):
