@@ -77,11 +77,14 @@ class TestRectangle(unittest.TestCase):
         # Get the captured output
         printed_message = self.mock_stdout.getvalue()
         # Assert the printed message matches the expected message
-        msg = "####\n####\n####\n####\n####\n####\n"
+        str1 = "####\n####\n####\n"
+        str2 = "####\n####\n####\n"
+        msg = f"{str1}{str2}"
         self.assertEqual(printed_message, msg)
 
     def test_display2(self):
-        """ test method display"""
+        """ test method display
+        """
         r1 = Rectangle(2, 2)
         r1.display()
         # Get the captured output
