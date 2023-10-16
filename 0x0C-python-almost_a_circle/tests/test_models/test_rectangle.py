@@ -1,9 +1,7 @@
+"""this module with purpose to test the class TestRectangle"""
 import unittest
-import models.rectangle as rectangle
+import models.rectangle as rec_mod
 from models.rectangle import Rectangle
-"""
-this module with purpose to test the class Base
-"""
 
 
 class TestRectangle(unittest.TestCase):
@@ -13,9 +11,9 @@ class TestRectangle(unittest.TestCase):
     # test documentation
     def test_doc(self):
         """test doc"""
-        self.assertTrue(rectangle.__doc__)
-        self.assertTrue(rectangle.Rectangle.__doc__)
-        self.assertTrue(rectangle.Rectangle.__init__.__doc__)
+        self.assertTrue(rec_mod.__doc__)
+        self.assertTrue(rec_mod.Rectangle.__doc__)
+        self.assertTrue(rec_mod.Rectangle.__init__.__doc__)
 
     def test_attribute_id(self):
         """ test value of id  attribute"""
