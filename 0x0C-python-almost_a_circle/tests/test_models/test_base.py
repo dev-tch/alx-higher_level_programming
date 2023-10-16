@@ -6,7 +6,7 @@ this module with purpose to test the class Base
 """
 
 
-class TestMaxInteger(unittest.TestCase):
+class TestBase(unittest.TestCase):
     """
     implement test cases
     """
