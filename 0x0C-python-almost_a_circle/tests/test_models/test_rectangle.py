@@ -3,12 +3,18 @@
 import unittest
 import models.rectangle as rec_mod
 from models.rectangle import Rectangle
+from models.base import Base
 
 
 class TestRectangle(unittest.TestCase):
     """
     implement test cases
     """
+
+    def setUp(self):
+        """ setup method that run before each test"""
+        Base._Base__nb_objects = 0
+
     # test documentation
     def test_doc(self):
         """test doc"""
@@ -42,3 +48,14 @@ class TestRectangle(unittest.TestCase):
 
         with self.assertRaises(ValueError):
             Rectangle(10, 2, 3, -1)
+
+    def test_area(self):
+        """ test method area"""
+        r1 = Rectangle(3, 2)
+        self.assertEqual(r1.area(), 6)
+
+        r2 = Rectangle(2, 10)
+        self.assertEqual(r2.area(), 20)
+
+        r3 = Rectangle(8, 7, 0, 0, 12)
+        self.assertEqual(r3.area(), 56)
