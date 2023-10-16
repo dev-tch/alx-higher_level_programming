@@ -4,6 +4,8 @@ import unittest
 import models.rectangle as rec_mod
 from models.rectangle import Rectangle
 from models.base import Base
+from unittest.mock import patch
+from io import StringIO
 
 
 class TestRectangle(unittest.TestCase):
@@ -59,3 +61,27 @@ class TestRectangle(unittest.TestCase):
 
         r3 = Rectangle(8, 7, 0, 0, 12)
         self.assertEqual(r3.area(), 56)
+
+    def test_display(self):
+        """ test method display"""
+        r1 = Rectangle(4, 6)
+        r1.display()
+        with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
+            r1.display()  # Call the function that prints the message
+            # Get the captured output
+            printed_message = mock_stdout.getvalue()
+            # Assert the printed message matches the expected message
+            msg = "####\n####\n####\n####\n####\n####\n"
+            self.assertEqual(printed_message, msg)
+
+    def test_display2(self):
+        """ test method display"""
+        r1 = Rectangle(2, 2)
+        r1.display()
+        with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
+            r1.display()  # Call the function that prints the message
+            # Get the captured output
+            printed_message = mock_stdout.getvalue()
+            # Assert the printed message matches the expected message
+            msg = "##\n##\n"
+            self.assertEqual(printed_message, msg)
