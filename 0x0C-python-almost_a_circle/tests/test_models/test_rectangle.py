@@ -16,6 +16,14 @@ class TestRectangle(unittest.TestCase):
     def setUp(self):
         """ setup method that run before each test"""
         Base._Base__nb_objects = 0
+        self.mock_stdout = StringIO()
+        self.patcher = patch('sys.stdout', new=self.mock_stdout)
+        self.patcher.start()
+
+    def tearDown(self):
+        # Restore sys.stdout to its original state after each test
+        self.patcher.stop()
+        self.mock_stdout.close()
 
     # test documentation
     def test_doc(self):
@@ -66,22 +74,38 @@ class TestRectangle(unittest.TestCase):
         """ test method display"""
         r1 = Rectangle(4, 6)
         r1.display()
-        with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
-            r1.display()  # Call the function that prints the message
-            # Get the captured output
-            printed_message = mock_stdout.getvalue()
-            # Assert the printed message matches the expected message
-            msg = "####\n####\n####\n####\n####\n####\n"
-            self.assertEqual(printed_message, msg)
+        # Get the captured output
+        printed_message = self.mock_stdout.getvalue()
+        # Assert the printed message matches the expected message
+        msg = "####\n####\n####\n####\n####\n####\n"
+        self.assertEqual(printed_message, msg)
 
     def test_display2(self):
         """ test method display"""
         r1 = Rectangle(2, 2)
         r1.display()
-        with patch('sys.stdout', new_callable=StringIO) as mock_stdout:
-            r1.display()  # Call the function that prints the message
-            # Get the captured output
-            printed_message = mock_stdout.getvalue()
-            # Assert the printed message matches the expected message
-            msg = "##\n##\n"
-            self.assertEqual(printed_message, msg)
+        # Get the captured output
+        printed_message = self.mock_stdout.getvalue()
+        # Assert the printed message matches the expected message
+        msg = "##\n##\n"
+        self.assertEqual(printed_message, msg)
+
+    def test__str__(self):
+        """ test method __str__"""
+        r1 = Rectangle(4, 6, 2, 1, 12)
+        print(r1)
+        # Get the captured output
+        printed_message = self.mock_stdout.getvalue().strip()
+        # Assert the printed message matches the expected message
+        msg = "[Rectangle] (12) 2/1 - 4/6"
+        self.assertEqual(printed_message, msg)
+
+    def test__str__2(self):
+        """ test method __str__"""
+        r2 = Rectangle(5, 5, 1)
+        print(r2)
+        # Get the captured output
+        printed_message = self.mock_stdout.getvalue().strip()
+        # Assert the printed message matches the expected message
+        msg = "[Rectangle] (1) 1/0 - 5/5"
+        self.assertEqual(printed_message, msg)
