@@ -1,9 +1,10 @@
-import unittest
-import models.base as base
-from models.base import Base
+#!/usr/bin/python3
 """
 this module with purpose to test the class Base
 """
+import unittest
+import models.base as base
+from models.base import Base
 
 
 class TestBase(unittest.TestCase):

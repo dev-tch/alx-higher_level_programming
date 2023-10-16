@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """this module with purpose to test the class TestRectangle"""
 import unittest
 import models.rectangle as rec_mod

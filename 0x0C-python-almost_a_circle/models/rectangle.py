@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """ module with one class Rectangle"""
 from models.base import Base
 
