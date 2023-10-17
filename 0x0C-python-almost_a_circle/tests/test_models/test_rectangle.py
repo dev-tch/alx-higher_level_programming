@@ -77,9 +77,7 @@ class TestRectangle(unittest.TestCase):
         # Get the captured output
         printed_message = self.mock_stdout.getvalue()
         # Assert the printed message matches the expected message
-        str1 = "####\n####\n####\n"
-        str2 = "####\n####\n####\n"
-        msg = f"{str1}{str2}"
+        msg = f"####\n####\n####\n####\n####\n####\n"
         self.assertEqual(printed_message, msg)
 
     def test_display2(self):
