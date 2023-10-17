@@ -110,3 +110,20 @@ class TestRectangle(unittest.TestCase):
         # Assert the printed message matches the expected message
         msg = "[Rectangle] (1) 1/0 - 5/5"
         self.assertEqual(printed_message, msg)
+
+    def test_improved_disp(self):
+        """ test method display
+        """
+        r1 = Rectangle(2, 3, 2, 2)
+        r1.display()
+        print("---")
+        r2 = Rectangle(3, 2, 1, 0)
+        r2.display()
+        # Get the captured output
+        printed_message = self.mock_stdout.getvalue()
+        # Assert the printed message matches the expected message
+        str1 = "\n\n"
+        str2 = "  ##\n  ##\n  ##\n---\n"
+        str3 = " ###\n ###\n"
+        msg = f"{str1}{str2}{str3}"
+        self.assertEqual(printed_message, msg)
