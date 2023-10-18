@@ -127,3 +127,27 @@ class TestRectangle(unittest.TestCase):
         str3 = " ###\n ###\n"
         msg = f"{str1}{str2}{str3}"
         self.assertEqual(printed_message, msg)
+
+    def test_update(self):
+        """ test method update"""
+        r1 = Rectangle(10, 10, 10, 10)
+        print(r1)
+        r1.update(89)
+        print(r1)
+        r1.update(89, 2)
+        print(r1)
+        r1.update(89, 2, 3)
+        print(r1)
+        r1.update(89, 2, 3, 4)
+        print(r1)
+        r1.update(89, 2, 3, 4, 5)
+        print(r1)
+        printed_message = self.mock_stdout.getvalue()
+        lst = []
+        lst.append("[Rectangle] (1) 10/10 - 10/10\n")
+        lst.append("[Rectangle] (89) 10/10 - 10/10\n")
+        lst.append("[Rectangle] (89) 10/10 - 2/10\n")
+        lst.append("[Rectangle] (89) 10/10 - 2/3\n")
+        lst.append("[Rectangle] (89) 4/10 - 2/3\n")
+        lst.append("[Rectangle] (89) 4/5 - 2/3\n")
+        self.assertEqual("".join(lst), printed_message)
