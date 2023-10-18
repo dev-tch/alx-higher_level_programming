@@ -88,20 +88,20 @@ class Rectangle(Base):
         str1 = f"[Rectangle] ({self.id}) {self.__x}/{self.__y}"
         return f"{str1} - {self.__width}/{self.__height}"
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """update method """
-        i = 0
-        while i < len(args):
-            if i == 0:
-                self.id = args[i]
-            elif i == 1:
-                self.__width = args[1]
-            elif i == 2:
-                self.__height = args[2]
-            elif i == 3:
-                self.__x = args[3]
-            elif i == 4:
-                self.__y = args[4]
-            else:
-                break
-            i += 1
+        if args:
+            # define a list that contains the attributes of object Rectangle
+            list_att = ["id", "width", "height", "x", "y"]
+            i = 0
+            for arg in args:
+                if i == 5:
+                    break
+                setattr(self, list_att[i], arg)
+                i += 1
+
+        elif kwargs:
+            for key, value in kwargs.items():
+                returned_attr = getattr(self, key, -1)
+                if returned_attr != -1:
+                    setattr(self, key, value)
