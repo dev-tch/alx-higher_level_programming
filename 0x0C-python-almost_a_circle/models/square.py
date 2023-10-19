@@ -25,3 +25,21 @@ class Square(Rectangle):
         """ setter method for attribute size"""
         self.width = size_value
         self.height = size_value
+
+    def update(self, *args, **kwargs):
+        """override update method update of class Rectangle"""
+        if args:
+            # define a list that contains the attributes of object Rectangle
+            list_att = ["id", "size", "x", "y"]
+            i = 0
+            for arg in args:
+                if i == 4:
+                    break
+                setattr(self, list_att[i], arg)
+                i += 1
+
+        elif kwargs:
+            for key, value in kwargs.items():
+                returned_attr = getattr(self, key, -1)
+                if returned_attr != -1:
+                    setattr(self, key, value)

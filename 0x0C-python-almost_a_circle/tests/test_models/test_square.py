@@ -85,6 +85,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(res, expected)
 
     def test_get_set_size(self):
+        """ method to test getter and setter of attribute size"""
         Base._Base__nb_objects = 0
         sq_obj = Square(5)
         print(sq_obj)
@@ -100,3 +101,35 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(res, expected)
         with self.assertRaises(TypeError):
             sq_obj.size = "9"
+
+    def test_update(self):
+        """test update method"""
+        Base._Base__nb_objects = 0
+        sq_obj = Square(5)
+        print(sq_obj)
+        sq_obj.update(10)
+        print(sq_obj)
+        sq_obj.update(1, 2)
+        print(sq_obj)
+        sq_obj.update(1, 2, 3)
+        print(sq_obj)
+        sq_obj.update(1, 2, 3, 4)
+        print(sq_obj)
+        sq_obj.update(x=12)
+        print(sq_obj)
+        sq_obj.update(size=7, y=1)
+        print(sq_obj)
+        sq_obj.update(size=7, id=89, y=1)
+        print(sq_obj)
+        my_lst = ["[Square] (1) 0/0 - 5\n",
+                  "[Square] (10) 0/0 - 5\n",
+                  "[Square] (1) 0/0 - 2\n",
+                  "[Square] (1) 3/0 - 2\n",
+                  "[Square] (1) 3/4 - 2\n",
+                  "[Square] (1) 12/4 - 2\n",
+                  "[Square] (1) 12/1 - 7\n",
+                  "[Square] (89) 12/1 - 7\n"
+                  ]
+        res = self.mock_stdout.getvalue()
+        expected = "".join(my_lst)
+        self.assertEqual(res, expected)
