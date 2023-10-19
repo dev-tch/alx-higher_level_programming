@@ -83,3 +83,20 @@ class TestSquare(unittest.TestCase):
         res = self.mock_stdout.getvalue()
         expected = "".join(my_lst)
         self.assertEqual(res, expected)
+
+    def test_get_set_size(self):
+        Base._Base__nb_objects = 0
+        sq_obj = Square(5)
+        print(sq_obj)
+        print(sq_obj.size)
+        sq_obj.size = 10
+        print(sq_obj)
+        my_lst = ["[Square] (1) 0/0 - 5\n",
+                  "5\n",
+                  "[Square] (1) 0/0 - 10\n"
+                  ]
+        res = self.mock_stdout.getvalue()
+        expected = "".join(my_lst)
+        self.assertEqual(res, expected)
+        with self.assertRaises(TypeError):
+            sq_obj.size = "9"
