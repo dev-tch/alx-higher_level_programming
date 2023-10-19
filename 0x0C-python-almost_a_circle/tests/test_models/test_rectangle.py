@@ -172,3 +172,27 @@ class TestRectangle(unittest.TestCase):
         lst.append("[Rectangle] (89) 3/1 - 2/1\n")
         lst.append("[Rectangle] (89) 1/3 - 4/2\n")
         self.assertEqual("".join(lst), printed_message)
+
+    def test_to_dictionary(self):
+        """test method to_dictionary"""
+        r1 = Rectangle(10, 2, 1, 9)
+        print(r1)
+        r1_dictionary = r1.to_dictionary()
+        print(r1_dictionary)
+        print(type(r1_dictionary))
+        r2 = Rectangle(1, 1)
+        print(r2)
+        r2.update(**r1_dictionary)
+        print(r2)
+        print(r1 == r2)
+
+        my_lst = ["[Rectangle] (1) 1/9 - 10/2\n",
+                  "{'id': 1, 'width': 10, 'height': 2, 'x': 1, 'y': 9}\n",
+                  "<class 'dict'>\n",
+                  "[Rectangle] (2) 0/0 - 1/1\n",
+                  "[Rectangle] (1) 1/9 - 10/2\n",
+                  "False\n"
+                  ]
+        res = self.mock_stdout.getvalue()
+        expected = "".join(my_lst)
+        self.assertEqual(res, expected)
