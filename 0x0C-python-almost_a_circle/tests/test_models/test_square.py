@@ -133,3 +133,27 @@ class TestSquare(unittest.TestCase):
         res = self.mock_stdout.getvalue()
         expected = "".join(my_lst)
         self.assertEqual(res, expected)
+
+    def test_to_dictionary(self):
+        """test method to_dictionary"""
+        Base._Base__nb_objects = 0
+        s1 = Square(10, 2, 1)
+        print(s1)
+        s1_dictionary = s1.to_dictionary()
+        print(s1_dictionary)
+        print(type(s1_dictionary))
+        s2 = Square(1, 1)
+        print(s2)
+        s2.update(**s1_dictionary)
+        print(s2)
+        print(s1 == s2)
+        my_lst = ["[Square] (1) 2/1 - 10\n",
+                  "{'id': 1, 'size': 10, 'x': 2, 'y': 1}\n",
+                  "<class 'dict'>\n",
+                  "[Square] (2) 1/0 - 1\n",
+                  "[Square] (1) 2/1 - 10\n",
+                  "False\n"
+                  ]
+        res = self.mock_stdout.getvalue()
+        expected = "".join(my_lst)
+        self.assertEqual(res, expected)
