@@ -40,3 +40,7 @@ class TestBase(unittest.TestCase):
         self.assertEqual(list_dict_str, json_dictionary)
         self.assertEqual(dict, type(my_dict))
         self.assertEqual(str, type(json_dictionary))
+        # test empty list_dict is empty
+        self.assertEqual("[]",  Base.to_json_string([]))
+        # test list_dict not defined None
+        self.assertEqual("[]", Base.to_json_string(None))
