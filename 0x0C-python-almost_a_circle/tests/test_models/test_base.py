@@ -5,6 +5,9 @@ this module with purpose to test the class Base
 import unittest
 import models.base as base
 from models.base import Base
+from models.rectangle import Rectangle
+from unittest.mock import patch, mock_open
+from io import StringIO
 
 
 class TestBase(unittest.TestCase):
@@ -44,3 +47,18 @@ class TestBase(unittest.TestCase):
         self.assertEqual("[]",  Base.to_json_string([]))
         # test list_dict not defined None
         self.assertEqual("[]", Base.to_json_string(None))
+
+    def test_save_to_file(self):
+        """test test_save_to_file"""
+        Base._Base__nb_objects = 0
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+
+        str1 = '[{"id": 1, "width": 10, "height": 7, "x": 2, "y": 8},'
+        str2 = ' {"id": 2, "width": 2, "height": 4, "x": 0, "y": 0}]'
+        expected = f"{str1}{str2}"
+        file_name = 'Rectangle.json'
+        with patch('builtins.open', mock_open()) as mock_file:
+            Rectangle.save_to_file(Rectangle, [r1, r2])
+            mock_file.assert_called_with(file_name, 'w', encoding='UTF-8')
+            mock_file().write.assert_called_with(expected)
