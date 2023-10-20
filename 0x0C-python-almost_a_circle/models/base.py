@@ -32,5 +32,5 @@ class Base:
             d = "[]"
             if list_objs is not None:
                 my_list = [obj.to_dictionary() for obj in list_objs]
-                d = cls.to_json_string(my_list)
+                d = Base.to_json_string(my_list)
             f.write(d)
