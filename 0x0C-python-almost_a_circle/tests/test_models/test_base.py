@@ -30,3 +30,13 @@ class TestBase(unittest.TestCase):
         self.assertEqual(b4.id, 12)
         b5 = Base()
         self.assertEqual(b5.id, 4)
+
+    def test_to_json_string(self):
+        """test method to_json_string"""
+        my_dict = {'x': 2, 'width': 10, 'id': 1, 'height': 7, 'y': 8}
+        list_dict = [my_dict]
+        list_dict_str = '[{"x": 2, "width": 10, "id": 1, "height": 7, "y": 8}]'
+        json_dictionary = Base.to_json_string(list_dict)
+        self.assertEqual(list_dict_str, json_dictionary)
+        self.assertEqual(dict, type(my_dict))
+        self.assertEqual(str, type(json_dictionary))
