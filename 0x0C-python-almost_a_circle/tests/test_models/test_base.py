@@ -59,6 +59,6 @@ class TestBase(unittest.TestCase):
         expected = f"{str1}{str2}"
         file_name = 'Rectangle.json'
         with patch('builtins.open', mock_open()) as mock_file:
-            Rectangle.save_to_file(Rectangle, [r1, r2])
+            Rectangle.save_to_file([r1, r2])
             mock_file.assert_called_with(file_name, 'w', encoding='UTF-8')
             mock_file().write.assert_called_with(expected)

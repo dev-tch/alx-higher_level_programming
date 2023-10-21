@@ -37,5 +37,5 @@ class Base:
         else:
             list_dict = [obj.to_dictionary() for obj in list_objs]
             json_str = Base.to_json_string(list_dict)
-        with open(file_name, "w") as f:
+        with open(file_name, "w", encoding="UTF-8") as f:
             f.write(json_str)
