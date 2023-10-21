@@ -21,6 +21,10 @@ class Base:
         """that returns the JSON string representation of list_dictionaries"""
         if list_dictionaries is None or len(list_dictionaries) == 0:
             return "[]"
+        # exception
+        if (not isinstance(list_dictionaries, list) or
+                not all(isinstance(x, dict) for x in list_dictionaries)):
+            raise TypeError("list_dictionaries must be a list of dictionaries")
         json_str = json.dumps(list_dictionaries)
         return json_str
 
