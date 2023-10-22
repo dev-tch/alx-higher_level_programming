@@ -14,6 +14,19 @@ class TestBase(unittest.TestCase):
     """
     implement test cases
     """
+
+    def setUp(self):
+        """ setup method that run before each test"""
+        Base._Base__nb_objects = 0
+        self.mock_stdout = StringIO()
+        self.patcher = patch('sys.stdout', new=self.mock_stdout)
+        self.patcher.start()
+
+    def tearDown(self):
+        # Restore sys.stdout to its original state after each test
+        self.patcher.stop()
+        self.mock_stdout.close()
+
     # test documentation
     def test_doc(self):
         """test doc"""
@@ -44,7 +57,7 @@ class TestBase(unittest.TestCase):
         self.assertEqual(dict, type(my_dict))
         self.assertEqual(str, type(json_dictionary))
         # test empty list_dict is empty
-        self.assertEqual("[]",  Base.to_json_string([]))
+        self.assertEqual("[]", Base.to_json_string([]))
         # test list_dict not defined None
         self.assertEqual("[]", Base.to_json_string(None))
 
@@ -62,3 +75,28 @@ class TestBase(unittest.TestCase):
             Rectangle.save_to_file([r1, r2])
             mock_file.assert_called_with(file_name, 'w', encoding='UTF-8')
             mock_file().write.assert_called_with(expected)
+
+    def test_from_json_string(self):
+        """test method from_json_string"""
+        list_input = [
+            {'id': 89, 'width': 10, 'height': 4},
+            {'id': 7, 'width': 1, 'height': 7}
+        ]
+        json_list_input = Rectangle.to_json_string(list_input)
+        list_output = Rectangle.from_json_string(json_list_input)
+        print("[{}] {}".format(type(list_input), list_input))
+        print("[{}] {}".format(type(json_list_input), json_list_input))
+        print("[{}] {}".format(type(list_output), list_output))
+        my_lst = []
+        my_lst.append("[<class 'list'>] ")
+        my_lst.append("[{'id': 89, 'width': 10, 'height': 4}, ")
+        my_lst.append("{'id': 7, 'width': 1, 'height': 7}]\n")
+        my_lst.append("[<class 'str'>] ")
+        my_lst.append('[{"id": 89, "width": 10, "height": 4}, ')
+        my_lst.append('{"id": 7, "width": 1, "height": 7}]\n')
+        my_lst.append("[<class 'list'>] ")
+        my_lst.append("[{'id': 89, 'width': 10, 'height': 4}, ")
+        my_lst.append("{'id': 7, 'width': 1, 'height': 7}]\n")
+        res = self.mock_stdout.getvalue()
+        expected = "".join(my_lst)
+        self.assertEqual(res, expected)
