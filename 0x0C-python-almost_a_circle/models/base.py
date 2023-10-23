@@ -47,3 +47,14 @@ class Base:
             return []
         else:
             return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        """returns an instance with all attributes already set"""
+        shape_obj = None
+        if cls.__name__ == "Rectangle":
+            shape_obj = cls(2, 1)
+        elif cls.__name__ == "Square":
+            shape_obj = cls(2)
+        shape_obj.update(**dictionary)
+        return shape_obj

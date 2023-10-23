@@ -100,3 +100,22 @@ class TestBase(unittest.TestCase):
         res = self.mock_stdout.getvalue()
         expected = "".join(my_lst)
         self.assertEqual(res, expected)
+
+    def test_create(self):
+        """ test method create(cls, **dictionary)"""
+        Base._Base__nb_objects = 0
+        r1 = Rectangle(3, 5, 1)
+        r1_dictionary = r1.to_dictionary()
+        r2 = Rectangle.create(**r1_dictionary)
+        print(r1)
+        print(r2)
+        print(r1 is r2)
+        print(r1 == r2)
+        my_lst = ["[Rectangle] (1) 1/0 - 3/5\n",
+                  "[Rectangle] (1) 1/0 - 3/5\n",
+                  "False\n",
+                  "False\n"
+                  ]
+        res = self.mock_stdout.getvalue()
+        expected = "".join(my_lst)
+        self.assertEqual(res, expected)
