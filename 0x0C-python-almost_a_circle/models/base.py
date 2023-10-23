@@ -58,3 +58,18 @@ class Base:
             shape_obj = cls(2)
         shape_obj.update(**dictionary)
         return shape_obj
+
+    @classmethod
+    def load_from_file(cls):
+        """returns a list of instances"""
+        file_name = f"{cls.__name__}.json"
+        try:
+            with open(file_name, 'r') as file:
+                json_obj = json.load(file)
+                instances = []
+                for item in json_obj:
+                    instance = cls.create(**item)
+                    instances.append(instance)
+                return instances
+        except FileNotFoundError:
+            return []

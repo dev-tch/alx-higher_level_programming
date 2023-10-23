@@ -6,6 +6,7 @@ import unittest
 import models.base as base
 from models.base import Base
 from models.rectangle import Rectangle
+from models.square import Square
 from unittest.mock import patch, mock_open
 from io import StringIO
 
@@ -115,6 +116,33 @@ class TestBase(unittest.TestCase):
                   "[Rectangle] (1) 1/0 - 3/5\n",
                   "False\n",
                   "False\n"
+                  ]
+        res = self.mock_stdout.getvalue()
+        expected = "".join(my_lst)
+        self.assertEqual(res, expected)
+
+    def test_load_from_file(self):
+        """test method load_from_file(cls)"""
+        Base._Base__nb_objects = 0
+        r1 = Rectangle(10, 7, 2, 8)
+        r2 = Rectangle(2, 4)
+        list_rectangles_input = [r1, r2]
+        Rectangle.save_to_file(list_rectangles_input)
+        list_rectangles_output = Rectangle.load_from_file()
+
+        for rect in list_rectangles_input:
+            print("{}".format(rect))
+
+        print("---")
+
+        for rect in list_rectangles_output:
+            print("{}".format(rect))
+
+        my_lst = ["[Rectangle] (1) 2/8 - 10/7\n",
+                  "[Rectangle] (2) 0/0 - 2/4\n",
+                  "---\n",
+                  "[Rectangle] (1) 2/8 - 10/7\n",
+                  "[Rectangle] (2) 0/0 - 2/4\n"
                   ]
         res = self.mock_stdout.getvalue()
         expected = "".join(my_lst)
