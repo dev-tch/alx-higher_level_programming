@@ -10,5 +10,5 @@ FROM cities AS c
 INNER JOIN 
 states AS s
 WHERE c.id = s.state_id
-ORDER BY c ASC;
+ORDER BY c.id ASC;
 
