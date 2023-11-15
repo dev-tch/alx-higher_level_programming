@@ -7,8 +7,7 @@
 
 SELECT c.id, c.name, s.name
 FROM cities AS c
-INNER JOIN 
-states AS s
-WHERE c.id = s.state_id
+INNER JOIN states AS s
+ON  c.id = s.state_id
 ORDER BY c.id ASC;
 
