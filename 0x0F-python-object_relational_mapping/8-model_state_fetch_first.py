@@ -16,5 +16,6 @@ if __name__ == "__main__":
     first_obj_state = session.query(State).order_by(State.id).first()
     if first_obj_state:
         print("{}: {}".format(first_obj_state.id, first_obj_state.name))
-    print("Nothing")
+    else:
+        print("Nothing")
     session.close()
