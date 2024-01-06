@@ -11,9 +11,9 @@ if __name__ == "__main__":
         content = res.read()
         print("Body response:$")
         # print content type
-        print("\t- {}".format(type(content)))
+        print("\t- type: {}".format(type(content)))
         # print content
-        print("\t- {}".format(content))
+        print("\t- content: {}".format(content))
         # pint decoded content
         headers = res.info()
         arr = headers["Content-Type"].split("=")
