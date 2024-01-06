@@ -15,8 +15,10 @@ if __name__ == "__main__":
         # print content
         print("\t- content: {}".format(content))
         # pint decoded content
-        headers = res.info()
-        arr = headers["Content-Type"].split("=")
-        encoding = arr[1]
-        data = content.decode(encoding)
-        print("\t- {} content: {}".format(encoding, data))
+        # headers = res.info()
+        # arr = headers["Content-Type"].split("=")
+        # encoding = arr[1]
+        # data = content.decode(encoding)
+        # print("\t- {} content: {}".format(encoding, data))
+        data = content.decode("UTF-8")
+        print("\t- utf8 content: {}".format(data))
