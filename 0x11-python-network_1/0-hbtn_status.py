@@ -10,10 +10,11 @@ if __name__ == "__main__":
     with urllib.request.urlopen(url) as res:
         content = res.read()
         print("Body response:$")
+        tab = "    "
         # print content type
-        print("\t- type: {}".format(type(content)))
+        print("{}- type: {}".format(tab, type(content)))
         # print content
-        print("\t- content: {}".format(content))
+        print("{}- content: {}".format(tab, content))
         # pint decoded content
         # headers = res.info()
         # arr = headers["Content-Type"].split("=")
@@ -21,4 +22,4 @@ if __name__ == "__main__":
         # data = content.decode(encoding)
         # print("\t- {} content: {}".format(encoding, data))
         data = content.decode("UTF-8")
-        print("\t- utf8 content: {}".format(data))
+        print("{}- utf8 content: {}".format(tab, data))
