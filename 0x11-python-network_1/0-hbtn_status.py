@@ -10,7 +10,7 @@ if __name__ == "__main__":
     with urllib.request.urlopen(url) as res:
         content = res.read()
         print("Body response:$")
-        tab = "    "
+        tab = "\t"
         # print content type
         print("{}- type: {}".format(tab, type(content)))
         # print content
