@@ -11,5 +11,5 @@ if __name__ == "__main__":
     if len(argv) >= 2:
         url = argv[1]
         res = get(url)
-        if res.headers["X-Request-Id"]:
+        if "X-Request-Id" in res.headers:
             print(res.headers["X-Request-Id"])
