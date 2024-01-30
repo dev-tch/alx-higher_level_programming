@@ -5,8 +5,7 @@ const data = process.argv[3];
 fs.writeFile(filePath, data,
   {
     encoding: 'utf8',
-    flag: 'w',
-    mode: 0o666
+    flag: 'w'
   },
   (err) => {
     if (err) {
