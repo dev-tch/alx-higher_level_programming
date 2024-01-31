@@ -1,6 +1,6 @@
 #!/usr/bin/node
 const request = require('request');
-const apiFilm = 'https://swapi-api.alx-tools.com/api/films/';
+const apiFilm = process.argv[2];
 let total = 0;
 request(apiFilm, (error, response, body) => {
   if (error) {
