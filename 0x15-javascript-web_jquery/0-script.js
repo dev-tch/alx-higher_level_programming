@@ -1,4 +1,6 @@
-const header = document.querySelector('body header')
-if (header) {
-    header.style.color = '#FF0000'
-}
+window.onload = function () {
+  const header = document.querySelector('body header');
+  if (header) {
+    header.style.color = '#FF0000';
+  }
+};
